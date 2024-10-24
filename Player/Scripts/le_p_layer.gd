@@ -17,6 +17,8 @@ func _physics_process(delta: float) -> void:
 	var vertical_d = Input.get_axis("down", "up")
 	velocity.y = -vertical_d * SPEED
 
+	velocity.normalized()
+
 	move_and_slide()
 	UpdateAnimation(horizontal_d, vertical_d)
 
@@ -27,7 +29,10 @@ func UpdateAnimation(horizontal_d, vertical_d = 0) -> void:
 		else:
 			animated_sprite.play("up")
 	elif horizontal_d != 0:
-		animated_sprite.flip_h = (horizontal_d == -1)
-		animated_sprite.play("left")
+		#animated_sprite.flip_h = (horizontal_d == -1)
+		if(horizontal_d == -1):
+			animated_sprite.play("left")
+		else: 
+			animated_sprite.play("right")
 	else:
 		animated_sprite.play("idle")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://cakui4eoriab5"]
 
-[ext_resource type="PackedScene" uid="uid://dvxuhqxkyt1my" path="res://Player/le_p_layer.tscn" id="1_rgr06"]
+[ext_resource type="PackedScene" uid="uid://dvxuhqxkyt1my" path="res://Player/player.tscn" id="1_rgr06"]
 [ext_resource type="Texture2D" uid="uid://cx4g7jalyh5kr" path="res://Tilesets/placeholders/Outside_A2.png" id="2_tsweo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1s8bx"]
@@ -1188,7 +1188,7 @@ sources/0 = SubResource("TileSetAtlasSource_1s8bx")
 
 [node name="TestScene" type="Node2D"]
 
-[node name="LePLayer" parent="." instance=ExtResource("1_rgr06")]
+[node name="Player" parent="." instance=ExtResource("1_rgr06")]
 z_index = 2
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

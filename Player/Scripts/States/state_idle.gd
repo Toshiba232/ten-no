@@ -12,7 +12,7 @@ func Exit() -> void:
 	pass
 	
 func Process( _delta: float ) -> State:
-	if player.direction != Vector2.ZERO:
+	if player.direction != Vector2.ZERO and player.can_move:
 		return walk
 	player.velocity = Vector2.ZERO
 	return null

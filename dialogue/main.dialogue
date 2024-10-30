@@ -1,0 +1,28 @@
+~ start
+Maryśka: Piwo!
+if piwo_status == 0:
+	Wszystko wypite.
+elif piwo_status == 1:
+	Maryśka: Została ostatnia butelka...
+	- Ostatnie piwo i do domu.
+		set piwo_status = 0
+		Maryśka: Dobra, jeszcze jedno nie zaszkodzi~
+		Wypijasz ostatnie piwo, nie zostawiając ani kropli.
+	- Może zostawię na potem...
+elif piwo_status == 2:
+	Maryśka: Zostały dwie butelki.
+	- Wypij kolejne
+		set piwo_status = 1
+		Maryśka: Piwo~!
+		Wypijasz kolejne piwo, delektując się orzeźwiającym smakiem.
+	- Może zostawię na potem...
+elif piwo_status == 3:
+	Maryśka: I to aż trzy butelki!
+	Bierzesz butelkę do ręki, sprawdzając jej zawartość. Wygląda na nieotwartą.
+	- Wypij butelkę
+		set piwo_status = 2
+		Maryśka: Nie po to brałam do ręki żeby teraz odkładać. Do dna!
+		Opróżniasz butelkę, czując wiśniowy posmak. 
+	- Nie pij
+do emit("dialogue_finished")
+=> END

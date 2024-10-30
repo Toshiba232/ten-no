@@ -19,7 +19,7 @@ func _ready() -> void:
 	pass
 	
 func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("action"):
 		var actonables = actionable_finder.get_overlapping_areas()
 		if actonables.size() > 0:
 			actonables[0].DialogStarted.connect(_on_dialog_started)

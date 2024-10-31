@@ -7,8 +7,8 @@
 [ext_resource type="Script" path="res://Player/Scripts/States/state_walk.gd" id="6_2763e"]
 [ext_resource type="Script" path="res://Player/Scripts/interactions.gd" id="6_pl2w0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbw0q"]
-size = Vector2(32, 32)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6evp"]
+height = 32.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_72dre"]
 atlas = ExtResource("3_b64fm")
@@ -175,7 +175,7 @@ wall_min_slide_angle = 0.174533
 script = ExtResource("1_miawl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_dbw0q")
+shape = SubResource("CapsuleShape2D_n6evp")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("4_h2xy7")
@@ -192,6 +192,7 @@ sprite_frames = SubResource("SpriteFrames_5nfq2")
 animation = &"idle_down"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(6, 0)
 
 [node name="Interactions" type="Node2D" parent="."]
 script = ExtResource("6_pl2w0")

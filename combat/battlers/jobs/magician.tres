@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StartingStats" load_steps=2 format=3 uid="uid://d2hxy87mjmm6a"]
+
+[ext_resource type="Script" path="res://combat/battlers/StartingStats.gd" id="1_m4smv"]
+
+[resource]
+script = ExtResource("1_m4smv")
+job_name = "Magik"
+max_hp = 20
+max_mp = 50
+strength = 8
+dexternity = 10
+fortitude = 10
+inteligence = 15
+luck = 13

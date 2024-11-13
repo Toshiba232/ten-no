@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://nvj6337wvv8f"]
+
+[ext_resource type="Script" path="res://combat/battlers/player_battler.gd" id="1_rg7mj"]
+[ext_resource type="Texture2D" uid="uid://bme2n30mftec5" path="res://combat/battlebacks/testing_bg.png" id="2_4131a"]
+[ext_resource type="PackedScene" uid="uid://bauqilgsukk3p" path="res://combat/battlers/player_battler.tscn" id="3_3i58k"]
+[ext_resource type="PackedScene" uid="uid://de5t3scthuj2k" path="res://combat/battlers/enemy_battler.tscn" id="4_ftg1c"]
+
+[node name="TurnBattle" type="Node2D"]
+script = ExtResource("1_rg7mj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(40, 20)
+texture = ExtResource("2_4131a")
+
+[node name="PlayerBattler" parent="." instance=ExtResource("3_3i58k")]
+position = Vector2(333, 408)
+
+[node name="EnemyBattler" parent="." instance=ExtResource("4_ftg1c")]
+position = Vector2(234, 182)
+
+[node name="EnemyBattler2" parent="." instance=ExtResource("4_ftg1c")]
+position = Vector2(368, 181)
+
+[node name="EnemyBattler3" parent="." instance=ExtResource("4_ftg1c")]
+position = Vector2(506, 180)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TurnActionButtons" type="HBoxContainer" parent="CanvasLayer"]
+offset_right = 642.0
+offset_bottom = 63.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+
+[node name="AttackButton" type="Button" parent="CanvasLayer/TurnActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Atakuj"
+
+[node name="SkillButton" type="Button" parent="CanvasLayer/TurnActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Umiejętności"
+
+[node name="SkipButton" type="Button" parent="CanvasLayer/TurnActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pomiń"
+
+[node name="RunButton" type="Button" parent="CanvasLayer/TurnActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Uciekaj"
+
+[node name="BattleEndPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BattleEndText" type="RichTextLabel" parent="CanvasLayer/BattleEndPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

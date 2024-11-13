@@ -1,0 +1,131 @@
+[gd_scene load_steps=12 format=3 uid="uid://bauqilgsukk3p"]
+
+[ext_resource type="Script" path="res://combat/battlers/player_battler.gd" id="1_xrdyx"]
+[ext_resource type="Texture2D" uid="uid://d3v7pam0vh4ni" path="res://sprite_projects/battleSprite.png" id="2_wdc1g"]
+[ext_resource type="Resource" uid="uid://d2hxy87mjmm6a" path="res://combat/battlers/jobs/magician.tres" id="2_y8n4a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0wn2"]
+
+[sub_resource type="Animation" id="Animation_xga3x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_0i0df"]
+resource_name = "in_turn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.01, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 0, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fv7gg"]
+_data = {
+"RESET": SubResource("Animation_xga3x"),
+"in_turn": SubResource("Animation_0i0df")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7jln"]
+bg_color = Color(0.870588, 0.0862745, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2w2lf"]
+bg_color = Color(8.90419e-07, 0.556629, 0.148934, 1)
+
+[sub_resource type="Animation" id="Animation_rrghp"]
+resource_name = "RESET"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hawel"]
+_data = {
+"RESET": SubResource("Animation_rrghp")
+}
+
+[node name="PlayerBattler" type="Node2D" groups=["PlayerBattler"]]
+script = ExtResource("1_xrdyx")
+stats_resource = ExtResource("2_y8n4a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, -28)
+scale = Vector2(2.01563, 2.01563)
+texture = ExtResource("2_wdc1g")
+
+[node name="TurnIndicator" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_left = -55.0
+offset_top = -71.0
+offset_right = 52.0
+offset_bottom = 36.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_f0wn2")
+
+[node name="TurnIndicatorAnimation" type="AnimationPlayer" parent="TurnIndicator"]
+libraries = {
+"": SubResource("AnimationLibrary_fv7gg")
+}
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -53.0
+offset_top = 14.0
+offset_right = 50.0
+offset_bottom = 33.0
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_j7jln")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2w2lf")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "12/24"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hawel")
+}

@@ -2,19 +2,18 @@ class_name Player extends CharacterBody2D
 
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine = $StateMachine
-
 @onready var actionable_finder: Area2D = $Interactions/ActionableFinder
 
 signal DirectionChanged( new_direction : Vector2 )
-
 var cardinal_direction : Vector2 = Vector2.ZERO
 var direction : Vector2 = Vector2.ZERO
-
 var can_move = true
+
+# Statystyki
+@export var stats_resource : StartingStats
 
 func _ready() -> void:
 	add_to_group("player")
-	
 	state_machine.Initialize(self)
 	pass
 	
@@ -24,7 +23,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		if actonables.size() > 0:
 			actonables[0].DialogStarted.connect(_on_dialog_started)
 			actonables[0].action()
-			
 			return
 			
 func _physics_process(delta: float) -> void:
@@ -67,10 +65,8 @@ func AnimDirection() -> String:
 func _on_dialog_started():
 	print("Dialog się rozpoczął!")
 	can_move = false
-	
 	print("can move: " + str(can_move))
 	
 func _on_dialogue_finished():
-	print("Zakończono dialodsadsg")
-
+	print("Zakończono dialog")
 	pass

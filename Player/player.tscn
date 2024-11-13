@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://dvxuhqxkyt1my"]
+[gd_scene load_steps=24 format=3 uid="uid://dvxuhqxkyt1my"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_miawl"]
+[ext_resource type="Resource" uid="uid://d2hxy87mjmm6a" path="res://combat/battlers/jobs/magician.tres" id="2_eox1m"]
 [ext_resource type="Texture2D" uid="uid://cd5y1bnftic1u" path="res://Player/Sprites/placeholder.png" id="3_b64fm"]
 [ext_resource type="Script" path="res://Player/Scripts/States/player_state_machine.gd" id="4_h2xy7"]
 [ext_resource type="Script" path="res://Player/Scripts/States/state_idle.gd" id="5_551b0"]
@@ -173,6 +174,7 @@ position = Vector2(184, 112)
 motion_mode = 1
 wall_min_slide_angle = 0.174533
 script = ExtResource("1_miawl")
+stats_resource = ExtResource("2_eox1m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dbw0q")

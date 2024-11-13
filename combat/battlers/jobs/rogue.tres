@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="StartingStats" load_steps=2 format=3 uid="uid://bma6qji2wq6e5"]
+
+[ext_resource type="Script" path="res://combat/battlers/StartingStats.gd" id="1_ob445"]
+
+[resource]
+script = ExtResource("1_ob445")
+type = 1
+job_name = "Kradziej"
+max_hp = 20
+max_mp = 10
+strength = 10
+dexternity = 16
+fortitude = 12
+inteligence = 7
+luck = 15

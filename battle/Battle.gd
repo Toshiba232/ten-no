@@ -68,6 +68,7 @@ func enemy_turn():
 		await self.textbox_closed
 	else:
 		var le_dmg = current_enemy.deal_damage()
+		print("Zadane obrażenia: ", le_dmg)
 		current_player_health = max(0, current_player_health - le_dmg)
 		set_health($PlayerPanel/PlayerData/ProgressBar, current_player_health, TestingPlayer.max_health)
 		#$AnimationPlayer.play("shake")

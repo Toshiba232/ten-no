@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://de4kasgimgxau"]
+
+[ext_resource type="Script" path="res://Tilesets/Levels/Scripts/player_spawn.gd" id="1_qh8id"]
+[ext_resource type="Texture2D" uid="uid://bdujtoxqx0xvw" path="res://sprite_projects/mors.png" id="1_qr5k1"]
+
+[node name="PlayerSpawn" type="Node2D"]
+z_index = 2
+script = ExtResource("1_qh8id")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.670588, 0, 0.67451, 0.513726)
+texture = ExtResource("1_qr5k1")
+hframes = 3
+vframes = 4
+frame = 1

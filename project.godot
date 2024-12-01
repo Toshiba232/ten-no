@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GameState="*res://game_state.gd"
 Globals="*res://globals.gd"
+TestingPlayer="*res://battle/BasePlayerBattler.gd"
 
 [dialogue_manager]
 

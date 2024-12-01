@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b4icultcpknui"]
+
+[ext_resource type="Script" path="res://battle/Enemies/BaseEnemy.gd" id="1_wdyiw"]
+[ext_resource type="Texture2D" uid="uid://4xdqh8w6nmaf" path="res://battle/Enemies/Krolik/krolik.png" id="2_8cl8b"]
+
+[resource]
+script = ExtResource("1_wdyiw")
+name = "Królik"
+texture = ExtResource("2_8cl8b")
+health = 15
+damage = 5

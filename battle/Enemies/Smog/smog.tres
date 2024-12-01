@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://drbh6b6obmujd"]
+
+[ext_resource type="Script" path="res://battle/Enemies/BaseEnemy.gd" id="1_v7ho5"]
+[ext_resource type="Texture2D" uid="uid://bawav2qjufvsv" path="res://battle/Enemies/Smog/smog.png" id="2_iqcam"]
+
+[resource]
+script = ExtResource("1_v7ho5")
+name = "Smog"
+texture = ExtResource("2_iqcam")
+health = 50
+damage = 15

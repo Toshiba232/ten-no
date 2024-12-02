@@ -23,6 +23,7 @@ Globals="*res://globals.gd"
 TestingPlayer="*res://battle/BasePlayerBattler.gd"
 LevelManager="*res://Globals/GlobalLevelManager.gd"
 PlayerManager="*res://Globals/GlobalPlayerManager.gd"
+SceneTransition="*res://Tilesets/Levels/scene_transition/SceneTransition.tscn"
 
 [dialogue_manager]
 

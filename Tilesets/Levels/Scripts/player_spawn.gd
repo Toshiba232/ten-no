@@ -7,8 +7,3 @@ func _ready() -> void:
 	if PlayerManager.player_spawned == false:
 		PlayerManager.set_player_position( global_position )
 		PlayerManager.player_spawned = true
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

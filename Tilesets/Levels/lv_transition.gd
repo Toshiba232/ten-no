@@ -3,7 +3,7 @@ class_name LevelTransiton extends Area2D
 
 
 enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
-
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 @export_file("*.tscn") var level
 @export var target_transition_area : String = "LevelTransiton"
@@ -25,7 +25,7 @@ enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 	set(_v):
 		_snap_to_grid()
 
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,14 +44,15 @@ func _ready() -> void:
 	
 func _player_entered(_p: Node2D) -> void:
 	LevelManager.load_new_level( level, target_transition_area, get_offset())
-	print(target_transition_area)
-	print(get_offset())
+	print("Target transition area: ", target_transition_area)
 	print()
 	pass
 
 func _place_player() -> void:
 	if name != LevelManager.target_transition:
 		return
+	print("Position offset place: ", LevelManager.position_offset)
+	print()
 	PlayerManager.set_player_position( global_position + LevelManager.position_offset )
 
 func get_offset() -> Vector2:
@@ -60,20 +61,15 @@ func get_offset() -> Vector2:
 	
 	if side == SIDE.LEFT or side == SIDE.RIGHT:
 		offset.y = player_pos.y - global_position.y
-		#offset.y = floor(player_pos.y - global_position.y)
-		#offset.y -= int(offset.y) % 2
-		offset.x = 16
+		offset.x = 20 # delikatnie więcej niż 16 by uniknąć transition loop
 		if side == SIDE.LEFT:
 			offset.x *= -1
 	else:	
 		offset.x =  player_pos.x - global_position.x
-		#offset.x =  floor(player_pos.x - global_position.x)
-		#offset.x -= int(offset.x) % 2
-		offset.y = 16
+		offset.y = 20 # delikatnie więcej niż 16 by uniknąć transition loop
 		if side == SIDE.TOP:
 			offset.y *= -1
-	
-	
+
 	return offset
 	
 func _update_area() -> void:
@@ -93,11 +89,11 @@ func _update_area() -> void:
 		new_rect.y *= size
 		new_position.x += 8
 	
-	if collision_shape == null:
-		collision_shape = get_node("CollisionShape2D")
+	if collision_shape_2d == null:
+		collision_shape_2d = get_node("CollisionShape2D")
 	
-	collision_shape.shape.size = new_rect
-	collision_shape.position = new_position	
+	collision_shape_2d.shape.size = new_rect
+	collision_shape_2d.position = new_position	
 	
 func _snap_to_grid() -> void:
 	position.x = round(position.x / 8) * 8

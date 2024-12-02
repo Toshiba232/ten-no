@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://de4kasgimgxau" path="res://Tilesets/Levels/player_spawn.tscn" id="1_c083q"]
 [ext_resource type="PackedScene" uid="uid://veptmt17e0lx" path="res://Tilesets/TileMaps/house.tscn" id="1_ncarr"]
 [ext_resource type="Script" path="res://Tilesets/Levels/Scripts/level.gd" id="1_oqaok"]
-[ext_resource type="PackedScene" uid="uid://bv03lnxdbkl7d" path="res://Tilesets/Levels/level_transition.tscn" id="4_cs5c8"]
+[ext_resource type="PackedScene" uid="uid://cx47r5a32w176" path="res://Tilesets/Levels/lv_transition.tscn" id="5_stxcq"]
 
 [node name="LevelHouse" type="Node2D"]
 y_sort_enabled = true
@@ -12,10 +12,10 @@ script = ExtResource("1_oqaok")
 [node name="TileMap" parent="." instance=ExtResource("1_ncarr")]
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("1_c083q")]
-position = Vector2(174, 412)
+position = Vector2(160, 445)
 
-[node name="LevelTransitonInHouse" parent="." instance=ExtResource("4_cs5c8")]
+[node name="LvTransitionInHouse" parent="." instance=ExtResource("5_stxcq")]
 position = Vector2(160, 464)
 level = "res://Tilesets/Levels/Area1/level_outside.tscn"
-target_transition_area = "LevelTransitionToHouse2"
+target_transition_area = "LvTransition"
 side = 3

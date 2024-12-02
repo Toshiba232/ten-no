@@ -20,7 +20,9 @@ func add_player_instance() -> void:
 
 func set_player_position( _new_pos: Vector2) -> void:
 	player.global_position = _new_pos
-	
+	player.direction = Vector2.ZERO
+	player.velocity = Vector2.ZERO
+	#player.UpdateAnimation("idle")
 
 func set_as_parent( _p: Node2D) -> void:
 	if player.get_parent():

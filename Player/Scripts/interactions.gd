@@ -8,9 +8,9 @@ func _ready() -> void:
 	player.DirectionChanged.connect( UpdateDirection )
 	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+## Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta: float) -> void:
+	#pass
 
 func UpdateDirection( new_direction : Vector2 ) -> void:
 	match new_direction:

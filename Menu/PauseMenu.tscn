@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://c8lsabjgo0nhr"]
+[gd_scene load_steps=2 format=3 uid="uid://c8lsabjgo0nhr"]
+
+[ext_resource type="Script" path="res://Menu/pause_menu.gd" id="1_j88re"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_j88re")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -23,3 +26,6 @@ text = "Wróć do gry"
 [node name="wyjdz" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Wyjdź z gry"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/wroc" to="." method="_on_wroc_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/wyjdz" to="." method="_on_wyjdz_pressed"]

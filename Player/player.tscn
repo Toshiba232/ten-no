@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dvxuhqxkyt1my"]
+[gd_scene load_steps=25 format=3 uid="uid://dvxuhqxkyt1my"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_miawl"]
 [ext_resource type="Texture2D" uid="uid://cd5y1bnftic1u" path="res://Player/Sprites/placeholder.png" id="3_b64fm"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Player/Scripts/States/state_walk.gd" id="6_2763e"]
 [ext_resource type="Script" path="res://Player/Scripts/PlayerCamera.gd" id="6_hlm67"]
 [ext_resource type="Script" path="res://Player/Scripts/interactions.gd" id="6_pl2w0"]
+[ext_resource type="PackedScene" uid="uid://c8lsabjgo0nhr" path="res://Menu/PauseMenu.tscn" id="7_0khtv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6evp"]
 radius = 9.0
@@ -199,6 +200,12 @@ animation = &"idle_down"
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(6, 0)
 script = ExtResource("6_hlm67")
+
+[node name="PauseMenu" parent="Camera2D" instance=ExtResource("7_0khtv")]
+offset_left = -171.0
+offset_top = -22.0
+offset_right = -171.0
+offset_bottom = -22.0
 
 [node name="Interactions" type="Node2D" parent="."]
 script = ExtResource("6_pl2w0")

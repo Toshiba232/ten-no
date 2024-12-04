@@ -1,8 +1,9 @@
 extends Control
 
+@onready var player = $"../.."
 
 func _on_wroc_pressed() -> void:
-	pass # Replace with function body.
+	player.pauseMenu()
 
 
 func _on_wyjdz_pressed() -> void:

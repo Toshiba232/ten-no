@@ -23,9 +23,14 @@ layout_mode = 2
 layout_mode = 2
 text = "Wróć do gry"
 
+[node name="menu" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Wyjdź do menu"
+
 [node name="wyjdz" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Wyjdź z gry"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/wroc" to="." method="_on_wroc_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/wyjdz" to="." method="_on_wyjdz_pressed"]

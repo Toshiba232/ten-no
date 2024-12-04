@@ -1,0 +1,43 @@
+~ notatka_w_kuchni
+Na blacie leży notatka od twojej współlokatorki.
+- Przeczytaj
+	Remka: Hejka. 
+	Remka: Okazało się, że w Gantowie festyn odbędzie się jednak jeszcze dzisiaj...
+			Więc wzięłam resztę pryncypałków z szafki na drogę.
+	Remka: Jakby co to idź kup kolejną paczkę. Pieniądze schowałam przy piecu.
+	- Odłóż notatkę
+		if !notatka_remki_przeczytana:
+			set notatka_remki_przeczytana = true
+		=> END
+	- Poddaj się i idź spać
+		{{get_tree().quit()}}
+		=> END
+- Nie czytaj
+=> END
+
+
+~ piec
+Jest to piec.
+if notatka_remki_przeczytana:
+	- Przeszukaj piec
+		if pieniadze_zabrane_z_pieca:
+			Nie znajdujesz niczego poza popiołem.
+			=> END
+		else:
+			Pod jednym z drewienek wyciągasz sakiewkę z monetami.
+			Maryśka: Akurat starczy na jedną paczkę pryncypałek!
+			set pieniadze_zabrane_z_pieca = true
+			=> END
+	- Dzięki, nie zauważyłam.
+	=> END
+- Dzięki, nie zauważyłam.
+=> END
+
+~ wyjscie
+if !notatka_remki_przeczytana:
+	Maryśka: A, właśnie... Zapomniałam przeczytać tą notatkę przy łóżku.
+	do PlayerManager.move_player_cutscene(Vector2(0, -32))
+elif notatka_remki_przeczytana and !pieniadze_zabrane_z_pieca:
+	Maryśka: Bez pieniędzy to nic nie kupię. Nie miały one być gdzieś przy piecu?
+	do PlayerManager.move_player_cutscene(Vector2(0, -32))
+=> END

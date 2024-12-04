@@ -24,6 +24,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var actonables = actionable_finder.get_overlapping_areas()
 		if actonables.size() > 0:
 			actonables[0].DialogStarted.connect(_on_dialog_started)
+			actonables[0].DialogFinished.connect(_on_dialogue_finished)
 			actonables[0].action()
 			
 			return
@@ -77,6 +78,11 @@ func _on_dialog_started():
 	print("can move: " + str(can_move))
 	
 func _on_dialogue_finished():
-	print("Zakończono dialodsadsg")
+	print("Zakończono dialog")
+	can_move = true
 
 	pass
+
+
+func move_cutscene(move: Vector2):
+	position += move

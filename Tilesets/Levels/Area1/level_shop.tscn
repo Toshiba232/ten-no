@@ -1,0 +1,111 @@
+[gd_scene load_steps=16 format=3 uid="uid://ciimbbjh60y3b"]
+
+[ext_resource type="Script" path="res://Tilesets/Levels/Scripts/level.gd" id="1_y0r6s"]
+[ext_resource type="PackedScene" uid="uid://de4kasgimgxau" path="res://Tilesets/Levels/player_spawn.tscn" id="3_iftyk"]
+[ext_resource type="PackedScene" uid="uid://cx47r5a32w176" path="res://Tilesets/Levels/lv_transition.tscn" id="4_1bot6"]
+[ext_resource type="PackedScene" uid="uid://u7njtqf6jvci" path="res://Helpers/actionable.tscn" id="5_iqsqy"]
+[ext_resource type="Texture2D" uid="uid://bawav2qjufvsv" path="res://battle/Enemies/Smog/smog.png" id="7_8akej"]
+[ext_resource type="PackedScene" uid="uid://sqfsdq55xcti" path="res://Tilesets/TileMaps/map_shop.tscn" id="7_acvp4"]
+[ext_resource type="Texture2D" uid="uid://b2rokaj7i4via" path="res://Tilesets/placeholders/Inside_C.png" id="8_0fupp"]
+[ext_resource type="PackedScene" uid="uid://b5iuhm8wr5olf" path="res://Helpers/detectable.tscn" id="8_dbfft"]
+[ext_resource type="Resource" uid="uid://d3akltt2h1dj3" path="res://dialogue/Area1/shop.dialogue" id="8_kd4ub"]
+[ext_resource type="Texture2D" uid="uid://4xdqh8w6nmaf" path="res://battle/Enemies/Krolik/krolik.png" id="9_76bq3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3qa0"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xawgw"]
+size = Vector2(44, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57t0e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhsmq"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hg6dl"]
+size = Vector2(64, 62)
+
+[node name="LevelShop" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_y0r6s")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("3_iftyk")]
+position = Vector2(270, 364)
+
+[node name="TileMap" parent="." instance=ExtResource("7_acvp4")]
+
+[node name="ActionableSmog" parent="." instance=ExtResource("5_iqsqy")]
+z_index = 3
+position = Vector2(287, 148)
+disable_mode = 1
+collision_layer = 25
+collision_mask = 25
+dialogue_resource = ExtResource("8_kd4ub")
+dialogue_start = "smog_niemily"
+fight_var = "walka_smog"
+dialogue_post_fight = "post_walka_smog"
+fight_path = "res://battle/Battle.tscn"
+
+[node name="Sprite2D" type="Sprite2D" parent="ActionableSmog"]
+z_index = -2
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_8akej")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionableSmog"]
+show_behind_parent = true
+shape = SubResource("RectangleShape2D_y3qa0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ActionableSmog"]
+show_behind_parent = true
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionableSmog/StaticBody2D"]
+modulate = Color(1, 0.00784314, 0, 1)
+z_index = 1
+shape = SubResource("RectangleShape2D_xawgw")
+
+[node name="LvTransitionInShop" parent="." instance=ExtResource("4_1bot6")]
+position = Vector2(336, 443)
+level = "res://Tilesets/Levels/Area1/level_outside.tscn"
+target_transition_area = "LvTransitionToShop"
+side = 3
+
+[node name="ActionablePryncypalki" parent="." instance=ExtResource("5_iqsqy")]
+position = Vector2(288, 120)
+dialogue_resource = ExtResource("8_kd4ub")
+dialogue_start = "pryncypalki"
+fight_var = "pryncypalki_zdobyte"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionablePryncypalki"]
+shape = SubResource("RectangleShape2D_57t0e")
+
+[node name="Sprite2D" type="Sprite2D" parent="ActionablePryncypalki"]
+position = Vector2(0, 5)
+texture = ExtResource("8_0fupp")
+hframes = 16
+vframes = 16
+frame = 192
+
+[node name="DetectableWyjscie" parent="." instance=ExtResource("8_dbfft")]
+position = Vector2(336, 446)
+dialogue_resource = ExtResource("8_kd4ub")
+dialogue_start = "wyjscie"
+condition = "pryncypalki_zaplacone"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectableWyjscie"]
+position = Vector2(0, -30)
+shape = SubResource("RectangleShape2D_rhsmq")
+
+[node name="Shopkeep" parent="." instance=ExtResource("5_iqsqy")]
+position = Vector2(240, 288)
+dialogue_resource = ExtResource("8_kd4ub")
+dialogue_start = "kupno"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shopkeep"]
+position = Vector2(-16, 4)
+shape = SubResource("RectangleShape2D_hg6dl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Shopkeep"]
+position = Vector2(-32.75, -5.90385)
+scale = Vector2(0.807692, 0.807692)
+texture = ExtResource("9_76bq3")

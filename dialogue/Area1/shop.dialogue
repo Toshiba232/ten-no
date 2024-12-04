@@ -1,0 +1,106 @@
+~ pryncypalki
+if walka_smog_wygrana != GameState.WALKA_STANY.WYGRANA:
+	=> END
+elif GameState.get_flag_dict("pryncypalki_zdobyte"):
+	=> END
+elif GameState.get_flag_dict("pryncypalki_zaplacone"):
+	=> END
+else:
+	Maryśka: Pryncypałki!
+	Bierzesz pryncypałki do rąk. teraz tylko za nie zapłacić i możesz się nimi cieszyć.
+	do GameState.set_flag("pryncypalki_zdobyte", true)
+	=> END
+
+
+
+~ kupno
+if GameState.get_flag_dict("pryncypalki_zaplacone"):
+	Maryśka: Jak życie?
+	Kasjer: Ujdzie. Kupujesz coś jeszcze?
+	Maryśka: Może potem.
+elif GameState.get_flag_dict("pryncypalki_zdobyte"):
+	Maryśka: Oto pryncypałki.
+	Kasjer: 37.99zł.
+	Podajesz kasjerowi należytą kwotę.
+	Kasjer: Życzę miłego dnia.
+	do GameState.set_flag("pryncypalki_zaplacone", true)
+elif walka_smog_wygrana == GameState.WALKA_STANY.BRAK:
+	Maryśka: Dzień dobry. Gdzie mogę dostać pryncypałki?
+	Kasjer: Są tam na górze, za tym Smogiem.
+	Maryśka: ... Od kiedy Smogi chodzą po sklepach?
+	Kasjer: Nie wiem i niezbyt mnie to obchodzi.
+elif walka_smog_wygrana == GameState.WALKA_STANY.WYGRANA and !GameState.get_flag_dict("pryncypalki_zdobyte")
+	Maryśka: Pokonałam smoka!
+	Kasjer: Gratuluję? Mam nadzieje, że nic się nie potłukło podczas waszej bijatyki...
+elif walka_smog_wygrana != GameState.WALKA_STANY.WYGRANA
+	Maryśka: Halo! Tamten koleś nie chce mi dać pryncypałek!
+	Kasjer: Nie mój problem.
+=> END
+
+~ wyjscie
+if GameState.get_flag_dict("pryncypalki_zdobyte") and !GameState.get_flag_dict("pryncypalki_zaplacone"):
+	Kasjer: Hej! Najpierw zapłać!
+	Maryśka: Dobra, dobra...
+	do PlayerManager.move_player_cutscene(Vector2(0, -32))
+	=> END
+elif  GameState.get_flag_dict("pryncypalki_zaplacone"):
+	=> END
+=> END
+
+
+~ fight_test
+if walka_smog_wygrana == GameState.WALKA_STANY.WYGRANA:
+	Smog: Dobra, przepraszam. Zachowaj swoje pryncypałki.
+	Maryśka: Huraa! Pryncypałki!
+	=> END
+test walki
+do LevelManager.load_fight("res://battle/Battle.tscn")
+=> END
+
+
+
+~ smog_niemily
+if walka_smog_wygrana == GameState.WALKA_STANY.WYGRANA:
+	Smog: Czego chcesz? Już zabrałaś swoje pryncypałki.
+	=> END
+elif walka_smog_wygrana == GameState.WALKA_STANY.PRZEGRANA:
+	Smog: Co? Chcesz się jeszcze raz bić?
+	- No pewnie
+		do LevelManager.load_fight("res://battle/Battle.tscn")
+		=> END
+	- Podziękuję...
+		=> END
+elif walka_smog_wygrana == GameState.WALKA_STANY.UCIECZKA:
+	Smog: O? Widzę że jednak chcesz te pryncypałki?
+	- No pewnie
+		do LevelManager.load_fight("res://battle/Battle.tscn")
+		=> END
+	- Podziękuję...
+		=> END
+Maryśka: Przepraszam, mógłby się Pan przesunąć? Blokuje mi pan drogę.
+Smog: Nie, nie przesunę się. Zająłem sobie te pryncypałki.
+Maryśka: Hę? To czemu ich po prostu nie kupisz?
+Smog: A w mordę chcesz?
+- Odejdź
+	Maryśka: Dobra dobra, spokojnie...
+	Smog łypie na ciebie jak odchodzisz, mrucząc coś niemiłego pod nosem.
+	set walka_smog_wygrana = GameState.WALKA_STANY.UCIECZKA
+	=> END
+- Walcz o swoje
+	Maryśka: Nie po to tutaj szłam żeby wracać z niczym!
+	Smog: O ty! Zaraz ci pokażę!
+	Smog wyciąga pałkę i rzuca się na ciebie!
+	do LevelManager.load_fight("res://battle/Battle.tscn")
+	=> END
+
+~ post_walka_smog
+if walka_smog_wygrana == GameState.WALKA_STANY.WYGRANA:
+	Smog: Dobra, przepraszam. Zachowaj swoje pryncypałki.
+	Maryśka: Huraa! Pryncypałki!
+elif walka_smog_wygrana == GameState.WALKA_STANY.PRZEGRANA: 
+	Smog: I co? Warto było skakać?
+	Niemiły Smog spluwa ci na buta, trzymając twoje pryncypałki.
+else:
+	Smog: Hę? Chcesz te pryncypałki czy nie?
+=> END
+

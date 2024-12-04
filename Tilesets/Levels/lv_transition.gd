@@ -51,7 +51,10 @@ func _player_entered(_p: Node2D) -> void:
 func _place_player() -> void:
 	if name != LevelManager.target_transition:
 		return
+	elif LevelManager.in_fight:
+		return
 	print("Position offset place: ", LevelManager.position_offset)
+	print("Target Transition: ", LevelManager.target_transition)
 	print()
 	PlayerManager.set_player_position( global_position + LevelManager.position_offset )
 

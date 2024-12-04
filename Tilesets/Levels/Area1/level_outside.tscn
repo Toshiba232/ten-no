@@ -14,8 +14,14 @@ script = ExtResource("1_d4tim")
 [node name="PlayerSpawn" parent="." instance=ExtResource("3_77frc")]
 position = Vector2(-249, 305)
 
-[node name="LvTransition" parent="." instance=ExtResource("5_jmr3v")]
+[node name="LvTransitionToHouse" parent="." instance=ExtResource("5_jmr3v")]
 position = Vector2(-368, 256)
 level = "res://Tilesets/Levels/Area1/level_house.tscn"
 target_transition_area = "LvTransitionInHouse"
+side = 2
+
+[node name="LvTransitionToShop" parent="." instance=ExtResource("5_jmr3v")]
+position = Vector2(416, 166)
+level = "res://Tilesets/Levels/Area1/level_shop.tscn"
+target_transition_area = "LvTransitionInShop"
 side = 2

@@ -9,7 +9,8 @@
 [ext_resource type="Script" path="res://Player/Scripts/interactions.gd" id="6_pl2w0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6evp"]
-height = 32.0
+radius = 9.0
+height = 18.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_72dre"]
 atlas = ExtResource("3_b64fm")
@@ -171,11 +172,14 @@ radius = 16.0312
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 2
+collision_layer = 9
+collision_mask = 9
 motion_mode = 1
 wall_min_slide_angle = 0.174533
 script = ExtResource("1_miawl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_n6evp")
 
 [node name="StateMachine" type="Node" parent="."]

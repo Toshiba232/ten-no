@@ -1,6 +1,6 @@
 class_name State_Walk extends State
 
-@export var SPEED = 100.0
+@export var SPEED = 120.0
 
 @onready var idle: State = $"../Idle"
 

@@ -1,8 +1,11 @@
-extends Control
+class_name Battle extends Control
 
 signal textbox_closed
 
+
+@export var walka : String = "walka_smog"
 #@onready var enemy: Node2D = $Enemy
+
 
 @onready var enemies: Node = $Enemies
 var current_enemy: Node2D = null
@@ -75,13 +78,30 @@ func enemy_turn():
 		#await $AnimationPlayer.animation_finished
 		display_text("%s zadał %d obrażeń!" % [current_enemy.enemy.name, le_dmg])
 		await self.textbox_closed
+		
+		if current_player_health == 0:
+			on_defeat()
+		
 	$ActionsPanel.show()
 
 func _on_Run_pressed():
 	display_text("Uciekłeś!")
 	await self.textbox_closed
 	await get_tree().create_timer(0.25).timeout
-	get_tree().quit()
+	LevelManager.after_fight(walka, GameState.WALKA_STANY.UCIECZKA)
+	
+func on_victory():
+	# Wszystkich pokonano
+	display_text("Wszyscy wrogowie zostali pokonani!")
+	await self.textbox_closed
+	await get_tree().create_timer(0.25).timeout
+	LevelManager.after_fight(walka, GameState.WALKA_STANY.WYGRANA)
+
+func on_defeat():
+	display_text("Przegrałeś!")
+	await self.textbox_closed
+	await get_tree().create_timer(0.25).timeout
+	LevelManager.after_fight(walka, GameState.WALKA_STANY.PRZEGRANA)
 
 func _on_Attack_pressed():
 	display_text("Bierzesz zamach miotłą!")
@@ -113,11 +133,7 @@ func _on_Attack_pressed():
 			$ActionsPanel.show()
 			load_enemy(1)
 		else:
-			# Wszystkich pokonano
-			display_text("Wszyscy wrogowie zostali pokonani!")
-			await self.textbox_closed
-			await get_tree().create_timer(0.25).timeout
-			get_tree().quit()
+			on_victory()
 	else:
 		enemy_turn()
 

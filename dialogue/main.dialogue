@@ -24,5 +24,5 @@ elif piwo_status == 3:
 		Maryśka: Nie po to brałam do ręki żeby teraz odkładać. Do dna!
 		Opróżniasz butelkę, czując wiśniowy posmak. 
 	- Nie pij
-do emit("dialogue_finished")
+#do emit("dialogue_finished")
 => END

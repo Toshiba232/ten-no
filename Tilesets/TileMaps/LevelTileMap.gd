@@ -1,4 +1,4 @@
-class_name LevelTileMap extends Node
+class_name LevelTileMap extends Node2D
 
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 

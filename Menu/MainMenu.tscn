@@ -2,11 +2,17 @@
 
 [ext_resource type="Script" path="res://Menu/main_menu.gd" id="1_k1hib"]
 
-[node name="MainMenu" type="Node2D"]
-position = Vector2(376, 218)
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 20.0
+offset_top = -29.0
+offset_right = 20.0
+offset_bottom = -29.0
 script = ExtResource("1_k1hib")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5

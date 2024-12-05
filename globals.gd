@@ -11,3 +11,4 @@ func _on_dialogue_end():
 	var playas = get_tree().get_nodes_in_group("player")
 	if playas.size() > 0:
 		playas[0].can_move = true
+		playas[0].can_pause = true

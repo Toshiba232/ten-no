@@ -13,6 +13,7 @@ var current_tilemap_bounds : Array[Vector2]
 var target_transition : String
 var position_offset : Vector2
 
+var in_menu: bool = true
 var in_fight: bool
 var current_fight: String
 

@@ -13,6 +13,9 @@ func _ready() -> void:
 	if LevelManager.in_fight:
 		print("Aktualnie trwa walka")
 		return	
+	elif LevelManager.in_menu:
+		print("Jestem w menu")
+		return
 		
 	add_player_instance()
 	await get_tree().create_timer(0.2).timeout
@@ -23,6 +26,15 @@ func _ready() -> void:
 func add_player_instance() -> void:
 	player = PLAYER.instantiate()
 	add_child(player)
+	
+func add_player_instance_but_better() -> void:
+	add_player_instance()
+	await get_tree().create_timer(0.2).timeout
+	player_spawned = true
+		
+func is_player_instantiated() -> bool:
+	return player != null
+	
 
 func get_player_position() -> Vector2:
 	last_position = player.global_position
@@ -46,4 +58,6 @@ func set_as_parent( _p: Node2D) -> void:
 
 func unparent_player( _p: Node2D) -> void:
 	_p.remove_child( player )
+
+
 		

@@ -12,6 +12,7 @@ const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 var direction : Vector2 = Vector2.ZERO
 
 var can_move = true
+var can_pause = true
 
 func _ready() -> void:
 	add_to_group("player")
@@ -74,12 +75,14 @@ func AnimDirection() -> String:
 func _on_dialog_started():
 	print("Dialog się rozpoczął!")
 	can_move = false
+	can_pause = false
 	
 	print("can move: " + str(can_move))
 	
 func _on_dialogue_finished():
 	print("Zakończono dialog")
 	can_move = true
+	can_pause = true
 
 	pass
 

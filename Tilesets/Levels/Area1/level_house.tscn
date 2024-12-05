@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://veptmt17e0lx" path="res://Tilesets/TileMaps/house.tscn" id="1_ncarr"]
 [ext_resource type="Script" path="res://Tilesets/Levels/Scripts/level.gd" id="1_oqaok"]
 [ext_resource type="PackedScene" uid="uid://cx47r5a32w176" path="res://Tilesets/Levels/lv_transition.tscn" id="5_stxcq"]
-[ext_resource type="PackedScene" uid="uid://b5iuhm8wr5olf" path="res://Helpers/detectable.tscn" id="8_io0qm"]
+[ext_resource type="PackedScene" path="res://Helpers/detectable.tscn" id="8_io0qm"]
 [ext_resource type="Resource" uid="uid://cht7jusaupfy6" path="res://dialogue/Area1/house.dialogue" id="9_eac5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkdef"]

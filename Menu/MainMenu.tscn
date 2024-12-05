@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3aytmhs61mkk"]
+
+[ext_resource type="Script" path="res://Menu/main_menu.gd" id="1_k1hib"]
+[ext_resource type="FontFile" uid="uid://clgdctws8qk42" path="res://battle/fonts/NESCyrillic.ttf" id="2_c7rhh"]
+[ext_resource type="FontFile" uid="uid://ccljysv14tn31" path="res://battle/fonts/Adventurer.ttf" id="3_7thme"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k1hib")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.193171, 0.564765, 0.328398, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 66.0
+offset_right = 243.0
+offset_bottom = 146.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("2_c7rhh")
+theme_override_font_sizes/normal_font_size = 46
+text = "Wyprawa po pryncypalki"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -42.0
+offset_right = 86.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7thme")
+theme_override_font_sizes/font_size = 32
+text = "Graj"
+
+[node name="quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7thme")
+theme_override_font_sizes/font_size = 32
+text = "Wyjdź z gry"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]

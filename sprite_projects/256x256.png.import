@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2i0lvboytoxi"
-path="res://.godot/imported/$ドロシー.png-3cc21bbfbc011c3d6565bb791a0418b3.ctex"
+uid="uid://blqftwunw6gux"
+path="res://.godot/imported/256x256.png-7927c2909583d26aab2ebc2a429bef5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite_projects/$ドロシー.png"
-dest_files=["res://.godot/imported/$ドロシー.png-3cc21bbfbc011c3d6565bb791a0418b3.ctex"]
+source_file="res://sprite_projects/256x256.png"
+dest_files=["res://.godot/imported/256x256.png-7927c2909583d26aab2ebc2a429bef5d.ctex"]
 
 [params]
 
